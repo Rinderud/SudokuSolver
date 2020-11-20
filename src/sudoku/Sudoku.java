@@ -1,6 +1,6 @@
 package sudoku;
 
-public class Sudoku implements SudokuSolver {
+public class Sudoku implements SudokuSolver { // testing git
 
     private int[][] board = new int [9][9];
     private int[][] boardCopy = new int [9][9]; // Om vi behöver ursprungsboard efter att ha ändrat i board.
