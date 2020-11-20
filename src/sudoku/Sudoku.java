@@ -34,7 +34,7 @@ public class Sudoku implements SudokuSolver {
     }
 
     @Override
-    public void clear() {
+    public void clear() { // Sätter alla rutor till 0
         for ( int i = 0; i < 9; i++) {
             for ( int j = 0; i < 9; i++) {
                 board[i][j] = 0;
