@@ -1,4 +1,4 @@
-package sudoku_ht20;
+package sudoku;
 
 public interface SudokuSolver {
 	/** TÃ¶mmer hela sudokut */
@@ -28,7 +28,7 @@ public interface SudokuSolver {
 	/** Tar bort siffran pÃ¥ raden row och kolumnen col. 
 	 * @throws IllegalArgumentException if the digit is outside the allowed range
 	 */
-	int removeNumber(int row, int col);
+	void removeNumber(int row, int col);
 
 	/** LÃ¶ser sudokut och returnerar true om sudokut gÃ¥r att lÃ¶sa. */
 	boolean solve();
