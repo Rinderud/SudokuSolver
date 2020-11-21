@@ -11,7 +11,7 @@ public class Sudoku implements SudokuSolver { // testing git
     }
 
     private boolean solve(int x, int y) {
-
+        return false;
     }
 
     private boolean checkRules(int val, int x, int y, boolean begin) {
