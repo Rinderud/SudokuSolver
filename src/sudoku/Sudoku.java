@@ -37,7 +37,7 @@ public class Sudoku implements SudokuSolver { // testing git
     public void clear() { // Sätter alla rutor till 0
         for ( int i = 0; i < 9; i++) {
             for ( int j = 0; i < 9; i++) {
-                board[i][j] = 0;
+                board[i][j] = 0; // Hur representeras en tom ruta?
             }
         }
 
