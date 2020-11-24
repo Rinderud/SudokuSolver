@@ -93,5 +93,13 @@ public class Sudoku implements SudokuSolver { // testing git
         }
         return tempReturn;
     }
-    
+
+    @Override
+    public void setNumbers(int[][] numbers) {
+        for ( int i = 0; i < 9; i++) {
+            for ( int j = 0; i < 9; i++) {
+                board[i][j] = numbers[i][j];
+            }
+        }
+    }
 }
