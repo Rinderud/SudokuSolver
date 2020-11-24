@@ -1,6 +1,6 @@
 package sudoku;
 
-public class Sudoku implements SudokuSolver { // testing git
+public class Sudoku implements SudokuSolver {
 
     private int[][] board = new int [9][9];
     private int[][] boardCopy = new int [9][9]; // Om vi behöver ursprungsboard efter att ha ändrat i board.
@@ -13,8 +13,8 @@ public class Sudoku implements SudokuSolver { // testing git
     private boolean solve(int x, int y) {
         return false;
     }
-
-    private boolean checkRules(int val, int x, int y, boolean begin) {
+    /** Returns true if no rule has been broken, else false */
+    private boolean checkRules(int x, int y,int val) {
         // rad
         for (int i = 0; i < 9; i++) {
             if ( y != i && board[x][i] == val) {
@@ -33,14 +33,14 @@ public class Sudoku implements SudokuSolver { // testing git
         for (int i = row; i < row+3; i++) {
             for (int j = col; j < col+3; i++) {
                 if (board[i][j] == val) {
-                    return true;
+                    return false;
                 }
             
             }
             
         }
 
-        return false;
+        return true;
     }
 
     @Override
@@ -63,8 +63,10 @@ public class Sudoku implements SudokuSolver { // testing git
 
     @Override
     public boolean trySetNumber(int row, int col, int number) {
-        
-        return false;
+        if (checkRules(row,col,number)) {
+            return true;
+        }
+        else return false;
     }
 
     @Override
