@@ -10,23 +10,23 @@ public interface SudokuSolver {
 	 * @param row    The row
 	 * @param col    The column
 	 * @param number The digit to insert
-	 * @throws IllegalArgumentException if the digit is outside the allowed range
+	 * @throws IllegalArgumentException if number not in [1..9] or row or col is outside the allowed range
 	 */
 	void setNumber(int row, int col, int number);
 	
 	/** Kollar om siffran number kan sättas i raden row och kolumnen col, 
 	 * om det inte går enligt spelreglerna returneras false 
-	 * @throws IllegalArgumentException if the digit is outside the allowed range
+	 * @throws IllegalArgumentException if number not in [1..9] or row or col is outside the allowed range
 	 */
 	boolean trySetNumber(int row, int col, int number);
 	
 	/** Returnerar siffran på raden row och kolumnen col. 
-	 * @throws IllegalArgumentException if the digit is outside the allowed range 
+	 * @throws IllegalArgumentException if row or col is outside the allowed range 
 	 */
 	int getNumber(int row, int col);
 	
 	/** Tar bort siffran på raden row och kolumnen col. 
-	 * @throws IllegalArgumentException if the digit is outside the allowed range
+	 * @throws IllegalArgumentException if row or col is outside the allowed range
 	 */
 	void removeNumber(int row, int col);
 
@@ -35,6 +35,11 @@ public interface SudokuSolver {
 	
 	/** Returnerar siffrorna i sudokut. */
 	int[][] getNumbers();
+
+	/** Fyller i siffrorna i numbers i sudokut. 
+	 * @throws IllegalArgumentException if not all numbers in [0..9]
+	 **/
+	void setNumbers(int[][] numbers);
 }
 
 /* TBD:
