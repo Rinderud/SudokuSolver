@@ -27,10 +27,20 @@ public class Sudoku implements SudokuSolver { // testing git
                 return false;
             }
         }
-
         // Lägg till check för 3x3.
+        int row = x-x%3;
+        int col = y-y%3;
+        for (int i = row; i < row+3; i++) {
+            for (int j = col; j < col+3; i++) {
+                if (board[i][j] == val) {
+                    return true;
+                }
+            
+            }
+            
+        }
 
-        return true;
+        return false;
     }
 
     @Override
