@@ -11,10 +11,24 @@ public class Sudoku implements SudokuSolver {
     }
 
     private boolean solve(int x, int y) {
+        for (int num = 1; num <= 9; num++){
+            if (trySetNumber(x, y, num)){   // Om det går att sätta där
+                setNumber(x, y, num);       // Gör det
+                if(x == 8){                 // Om det är sista i x-led
+                    if (y == 8){            // Om det är sista i y-led
+                        return true;        // KLAR
+                    }
+                    solve(0, y + 1);        // Forstsätt på nästa rad
+                }else{
+                    solve(x + 1, y);        // Fortsätt i nästa kolumn
+                }
+            }
+        }
         return false;
     }
+
     /** Returns true if no rule has been broken, else false */
-    private boolean checkRules(int x, int y,int val) {
+    private boolean checkRules(int x, int y, int val) {
         // rad
         for (int i = 0; i < 9; i++) {
             if ( y != i && board[x][i] == val) {
