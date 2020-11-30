@@ -6,6 +6,7 @@ public class Sudoku implements SudokuSolver {
     private int[][] boardCopy = new int [9][9]; // Om vi behöver ursprungsboard efter att ha ändrat i board.
 
     public Sudoku(int[][] solveBoard) {
+        System.out.println("Hej");
         this.board = solveBoard;
         this.boardCopy = solveBoard; // Om vi behöver ursprungsboard efter att ha ändrat i board.
     }
