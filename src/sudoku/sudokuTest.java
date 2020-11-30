@@ -8,17 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class sudokuTest {
-    Sudoku sudoku;
-    int[][] board;
-
     private int[][] board1;
     private int[][] board2;
-    private Sudoku sudoku1;
+    private Sudoku sudoku;
 
 
     @Before
     public void setUp() throws Exception {
-        board1 = new int[][] { { 2, 7, 4, 0, 9, 0, 6, 5, 3 },
+        board1 = new int[][] { 
+        { 2, 7, 4, 0, 9, 0, 6, 5, 3 },
         { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
         { 0, 4, 0, 6, 1, 8, 3, 9, 7 },
         { 7, 6, 1, 0, 4, 0, 5, 2, 8 },
@@ -28,7 +26,8 @@ public class sudokuTest {
         { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
         { 0, 0, 5, 3, 6, 2, 9, 7, 4 }
         };
-        board2 = new int[][] { { 2, 7, 4, 0, 9, 0, 6, 5, 0 },
+        board2 = new int[][] { 
+        { 2, 7, 4, 0, 9, 0, 6, 5, 0 },
         { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
         { 0, 4, 0, 6, 1, 8, 3, 9, 7 },
         { 7, 6, 1, 0, 4, 0, 5, 2, 8 },
@@ -38,18 +37,19 @@ public class sudokuTest {
         { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
         { 0, 0, 5, 3, 6, 2, 9, 7, 4 }
         };
-        sudoku1 = new Sudoku(board1);   
+        sudoku = new Sudoku(board1);   
     }
 
     @After
     public void tearDown() throws Exception{
         sudoku = null;
-        board = null;
+        board1 = null;
+        board2 = null;
     }
 
     @Test
     public void testImpSudoku(){
-        
+        fail("Not yet implemented");
     }
     
     @Test
