@@ -106,8 +106,7 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean solve() {
-        // TODO Auto-generated method stub
-        return false;
+        return solve(0, 0);
     }
 
     @Override
