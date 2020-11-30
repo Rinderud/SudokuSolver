@@ -48,7 +48,7 @@ public class sudokuTest {
     }
 
     @Test
-    public void testImpSudoku(){
+    public void testImpSudoku(){ //Tests impossible sudoku
         fail("Not yet implemented");
     }
     
