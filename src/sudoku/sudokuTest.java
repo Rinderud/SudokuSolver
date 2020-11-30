@@ -18,7 +18,7 @@ public class sudokuTest {
 
     @After
     public void tearDown() throws Exception{
-        Sudoku = null;
+        sudoku = null;
         board = null;
     }
 
