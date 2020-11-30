@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class sudokuTest {
+    Sudoku sudoku;
+    int[][] board;
 
     @Before
     public void setUp() throws Exception {
@@ -16,7 +18,8 @@ public class sudokuTest {
 
     @After
     public void tearDown() throws Exception{
-
+        Sudoku = null;
+        board = null;
     }
 
     @Test
