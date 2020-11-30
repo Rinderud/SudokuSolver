@@ -1,72 +1,72 @@
 package sudoku;
 
-//import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
-//import org.junit.jupiter.api.AfterEach;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-class sudokuTest {
-    
+public class sudokuTest {
 
-    @BeforeEach
-    void setUp() throws Exception{
-
-    }
-
-    @AfterEach
-    void tearDown() throws Exception{
+    @Before
+    public void setUp() throws Exception {
 
     }
 
-    @Test
-    void testSudoku(){
-        
+    @After
+    public void tearDown() throws Exception{
+
     }
 
     @Test
-    void testSolve(){
-        
+    public void testSudoku(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testCheckRules(){
-        
+    public void testSolve(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testClear(){
-        
+    public void testCheckRules(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testSetNumber(){
-        
+    public void testClear(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testTrySetNumber(){
-        
+    public void testSetNumber(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testGetNumber(){
-        
+    public void testTrySetNumber(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testRemoveNumber(){
-        
+    public void testGetNumber(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testGetNumbers(){
-        
+    public void testRemoveNumber(){
+        fail("Not yet implemented");
     }
 
     @Test
-    void testSetNumbers(){
-        
+    public void testGetNumbers(){
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testSetNumbers(){
+        fail("Not yet implemented");
     }
 
 }
