@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class sudokuTest {
+    Sudoku sudoku;
+    int[][] board;
 
     private int[][] board1;
     private int[][] board2;
@@ -25,7 +27,8 @@ public class sudokuTest {
 
     @After
     public void tearDown() throws Exception{
-
+        sudoku = null;
+        board = null;
     }
 
     @Test
