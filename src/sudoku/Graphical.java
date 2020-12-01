@@ -22,7 +22,9 @@ public class Graphical {
             panelMatrix[i] = new JPanel();
             panelMatrix[i].setLayout(new GridLayout(n, n));
             for(int j = 0; j < n*n; j++){
-                panelMatrix[i].add(new JLabel(i + ":" + j));
+                JLabel label = new JLabel(" " + i + ":" + j + " ");
+                label.setFont(new Font("Serif", Font.PLAIN, 64));
+                panelMatrix[i].add(label);
             }
             panelMatrix[i].setBackground(new Color(i*5, i*5, i*5));
             windowPane.add(panelMatrix[i]);
