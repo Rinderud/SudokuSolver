@@ -11,12 +11,22 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class Graphical {
+    private final static int[][] board = new int[][] {
+        { 2, 7, 4, 0, 9, 0, 6, 5, 3 },
+        { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
+        { 0, 4, 0, 6, 1, 8, 3, 9, 7 },
+        { 7, 6, 1, 0, 4, 0, 5, 2, 8 },
+        { 9, 3, 8, 7, 2, 5, 0, 6, 3 },
+        { 1, 0, 0, 4, 5, 6, 7, 8, 9 },
+        { 4, 5, 7, 0, 8, 0, 2, 3, 6 },
+        { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
+        { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
 
-    public Graphical(int bigness) {
-        SwingUtilities.invokeLater(() -> createWindow(bigness));
+    public Graphical(Sudoku sudoku, int bigness) {
+        SwingUtilities.invokeLater(() -> createWindow(sudoku, bigness));
     }
 
-    private void createWindow(int n) {
+    private void createWindow(Sudoku sudoku, int n) {
         JFrame frame = new JFrame("Solving sodukus since 1999");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container windowPane = frame.getContentPane();
@@ -24,16 +34,7 @@ public class Graphical {
 
         JPanel[] panelMatrix = new JPanel[n * n];
 
-        int[][] board = new int[][] {
-            { 2, 7, 4, 0, 9, 0, 6, 5, 3 },
-            { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
-            { 0, 4, 0, 6, 1, 8, 3, 9, 7 },
-            { 7, 6, 1, 0, 4, 0, 5, 2, 8 },
-            { 9, 3, 8, 7, 2, 5, 0, 6, 3 },
-            { 1, 0, 0, 4, 5, 6, 7, 8, 9 },
-            { 4, 5, 7, 0, 8, 0, 2, 3, 6 },
-            { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
-            { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
+        
 
 
 /**
@@ -52,7 +53,7 @@ public class Graphical {
 
         for (int x = 0; x < 9; x++){
             for (int y = 0; y < 9; y++){
-                JLabel label = new JLabel("  " + board[x][y] + "  ");
+                JLabel label = new JLabel("  " + sudoku.getNumber(x, y) + "  ");
                 label.setFont(new Font("Serif", Font.BOLD, 100));       // Större text
                 panelMatrix[conversion(x, y)].add(label);
             }
@@ -102,6 +103,7 @@ public class Graphical {
     }
 
     public static void main(String[] args) {
-        new Graphical(3);
+        Sudoku solveThis = new Sudoku(board);
+        new Graphical(solveThis, 3);
     }
 }
