@@ -42,27 +42,63 @@ public class Graphical {
  * Den grafiska delen behöver då skrivas om,
  * samma delar men kanske i en annan loop och sparas annorlunda.
  */
-
-
-        for (int i = 0; i < panelMatrix.length; i++) {
+        for (int i = 0; i < panelMatrix.length; i++){
             panelMatrix[i] = new JPanel();
             panelMatrix[i].setLayout(new GridLayout(n, n));
-            for (int j = 0; j < n * n; j++) {
-                JLabel label = new JLabel("  " + board[x][y] + "  "); // Tillfällig lösning till hur brädan skrivs ut
-                label.setFont(new Font("Serif", Font.PLAIN, 100)); // Sätter storleken på texten till 100, så man enkelt
-                                                                   // ser.
-                panelMatrix[i].add(label);
-            }
             if (i % 2 == 1) {
-                panelMatrix[i].setBackground(new Color(150, 150, 150)); // Färgar hälften av 3x3 rutorna, så det blir
-                                                                        // tydligare
+                panelMatrix[i].setBackground(new Color(150, 150, 150));     // Färgar hälften av 3x3 rutorna
             }
+        }
 
+        for (int x = 0; x < 9; x++){
+            for (int y = 0; y < 9; y++){
+                JLabel label = new JLabel("  " + board[x][y] + "  ");
+                label.setFont(new Font("Serif", Font.BOLD, 100));       // Större text
+                panelMatrix[conversion(x, y)].add(label);
+            }
+        }
+
+        for (int i = 0; i < panelMatrix.length; i++){
             windowPane.add(panelMatrix[i]);
         }
 
         frame.pack();
         frame.setVisible(true);
+    }
+
+    /**
+     * 
+     * @param x
+     * @param y
+     * @return The index of the pane that number should be in
+     */
+    private int conversion(int x, int y) {
+        if (x < 3 && 0 <= x){
+            if (y < 3 && 0 <= y){
+                return 0;
+            }else if (y < 6 && 3 <= y){
+                return 1;
+            }else{
+                return 2;
+            }
+        }else if (x < 6 && 3 <= x){
+            if (y < 3 && 0 <= y){
+                return 3;
+            }else if (y < 6 && 3 <= y){
+                return 4;
+            }else{
+                return 5;
+            }
+        }else{
+            if (y < 3 && 0 <= y){
+                return 6;
+            }else if (y < 6 && 3 <= 6){
+                return 7;
+            }else{
+                return 8;
+            }
+        }
+
     }
 
     public static void main(String[] args) {
