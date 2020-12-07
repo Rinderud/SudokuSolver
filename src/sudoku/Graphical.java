@@ -1,10 +1,13 @@
 package sudoku;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -30,15 +33,12 @@ public class Graphical {
         JFrame frame = new JFrame("Solving sodukus since 1999");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container windowPane = frame.getContentPane();
-        windowPane.setLayout(new GridLayout(n, n));
+        windowPane.setLayout(new BorderLayout());
 
+        JPanel segmentPanel = new JPanel();
+        segmentPanel.setLayout(new GridLayout(n, n));
         JPanel[] panelMatrix = new JPanel[n * n];
 
-        /**
-         * Loopen behöver göras om: Den ska loopa logiskt, dvs. som man loopar igenom en
-         * 2d matris. Den grafiska delen behöver då skrivas om, samma delar men kanske i
-         * en annan loop och sparas annorlunda.
-         */
         for (int i = 0; i < panelMatrix.length; i++) {
             panelMatrix[i] = new JPanel();
             panelMatrix[i].setLayout(new GridLayout(n, n));
@@ -46,9 +46,9 @@ public class Graphical {
 
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
-                JTextField textField = new JTextField("  " + sudoku.getNumber(x, y) + "  ");
-                textField.setFont(new Font("Serif", Font.BOLD, 100)); // Större text
-                textField.setHorizontalAlignment(textField.CENTER);
+                JTextField textField = new JTextField(""+sudoku.getNumber(x, y));
+                textField.setFont(new Font("Serif", Font.BOLD, 50)); // Större text
+                textField.setHorizontalAlignment(0);
                 if (conversion(x, y) % 2 == 0) {
                     textField.setBackground(new Color(254, 127, 73));
                 }
@@ -57,9 +57,25 @@ public class Graphical {
         }
 
         for (int i = 0; i < panelMatrix.length; i++) {
-            windowPane.add(panelMatrix[i]);
+            segmentPanel.add(panelMatrix[i]);
         }
 
+        JButton solveButton = new JButton("SOLVE");
+        JButton clearButton = new JButton("CLEAR");
+
+        solveButton.setPreferredSize(new Dimension(450, 30));
+        clearButton.setPreferredSize(new Dimension(450, 30));
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BorderLayout());
+        buttonPanel.add(solveButton, BorderLayout.WEST);
+        buttonPanel.add(clearButton, BorderLayout.EAST);
+
+
+        windowPane.add(segmentPanel);
+        windowPane.add(buttonPanel, BorderLayout.SOUTH);
+
+        frame.setPreferredSize(new Dimension(900, 900));
         frame.pack();
         frame.setVisible(true);
     }
