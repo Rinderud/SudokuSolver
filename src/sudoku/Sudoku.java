@@ -49,6 +49,10 @@ public class Sudoku implements SudokuSolver {
 
     /** Returns true if no rule has been broken, else false */
     private boolean checkRules(int x, int y, int val) {
+        if (board[x][y] != 0){
+            return false;
+        }
+
         // rad
         for (int i = 0; i < 9; i++) {
             if ( y != i && board[x][i] == val) {
@@ -62,14 +66,6 @@ public class Sudoku implements SudokuSolver {
             }
         }
 
-        /**
-         * Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
-        at sudoku.Sudoku.checkRules(Sudoku.java:69)
-        at sudoku.Sudoku.trySetNumber(Sudoku.java:100)
-        at sudoku.Sudoku.solve(Sudoku.java:31)
-        at sudoku.Sudoku.solve(Sudoku.java:118)
-        at sudoku.Graphical.main(Graphical.java:121)
-         */
         // Lägg till check för 3x3.
         int row = x - x%3;
         int col = y - y%3;
@@ -108,8 +104,9 @@ public class Sudoku implements SudokuSolver {
     public boolean trySetNumber(int row, int col, int number) {
         if (checkRules(row,col,number)) {
             return true;
+        }else{
+            return false;
         }
-        else return false;
     }
 
     @Override
@@ -124,7 +121,14 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean solve() {
-        return solve(0, 0);
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                if(!solve(row, col)){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
