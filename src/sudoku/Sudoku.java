@@ -71,10 +71,10 @@ public class Sudoku implements SudokuSolver {
         at sudoku.Graphical.main(Graphical.java:121)
          */
         // Lägg till check för 3x3.
-        int row = x-x%3;
-        int col = y-y%3;
+        int row = x - x%3;
+        int col = y - y%3;
         for (int i = row; i < row+3; i++) {
-            for (int j = col; j < col+3; i++) {
+            for (int j = col; j < col+3; j++) {
                 if (board[i][j] == val) {
                     return false;
                 }
