@@ -63,6 +63,15 @@ public class Graphical {
         JButton solveButton = new JButton("SOLVE");
         JButton clearButton = new JButton("CLEAR");
 
+        solveButton.addActionListener(event -> {
+            sudoku.solve();
+        });
+
+        clearButton.addActionListener(event -> {
+            sudoku.clear();
+        });
+
+
         Dimension buttonDimension = new Dimension(441, 30);
         solveButton.setPreferredSize(buttonDimension);
         clearButton.setPreferredSize(buttonDimension);
