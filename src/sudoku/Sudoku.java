@@ -15,17 +15,18 @@ public class Sudoku implements SudokuSolver {
     }
 
     private boolean solve(int x, int y) {
-        if(getNumber(x, y) != 0){           // Om det redan är ifyllt
+        if (getNumber(x, y) != 0){           // Om det redan är ifyllt
             if(x == 8){                 // Om det är sista i x-led
                 if (y == 8){            // Om det är sista i y-led
                     return true;        // KLAR
                 }else{
-                    solve(0, y + 1);    // Forstsätt på nästa rad
+                    return solve(0, y + 1);    // Forstsätt på nästa rad
                 }
             }else{
-                solve(x + 1, y);        // Fortsätt i nästa kolumn
+                return solve(x + 1, y);        // Fortsätt i nästa kolumn
             }
         }
+
         for (int num = 1; num <= 9; num++){
             if (trySetNumber(x, y, num)){   // Om det går att sätta där
                 setNumber(x, y, num);       // Gör det
@@ -33,9 +34,13 @@ public class Sudoku implements SudokuSolver {
                     if (y == 8){            // Om det är sista i y-led
                         return true;        // KLAR
                     }
-                    solve(0, y + 1);        // Forstsätt på nästa rad
+                    if (solve(0, y + 1)){   // Forstsätt på nästa rad
+                        return true;
+                    }
                 }else{
-                    solve(x + 1, y);        // Fortsätt i nästa kolumn
+                    if (solve(x + 1, y)){        // Fortsätt i nästa kolumn
+                        return true;
+                    }
                 }
             }
         }
@@ -56,6 +61,15 @@ public class Sudoku implements SudokuSolver {
                 return false;
             }
         }
+
+        /**
+         * Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+        at sudoku.Sudoku.checkRules(Sudoku.java:69)
+        at sudoku.Sudoku.trySetNumber(Sudoku.java:100)
+        at sudoku.Sudoku.solve(Sudoku.java:31)
+        at sudoku.Sudoku.solve(Sudoku.java:118)
+        at sudoku.Graphical.main(Graphical.java:121)
+         */
         // Lägg till check för 3x3.
         int row = x-x%3;
         int col = y-y%3;
