@@ -63,8 +63,9 @@ public class Graphical {
         JButton solveButton = new JButton("SOLVE");
         JButton clearButton = new JButton("CLEAR");
 
-        solveButton.setPreferredSize(new Dimension(450, 30));
-        clearButton.setPreferredSize(new Dimension(450, 30));
+        Dimension buttonDimension = new Dimension(441, 30);
+        solveButton.setPreferredSize(buttonDimension);
+        clearButton.setPreferredSize(buttonDimension);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BorderLayout());
@@ -116,7 +117,8 @@ public class Graphical {
     }
 
     public static void main(String[] args) {
-        Sudoku solveThis = new Sudoku(board);
+        Sudoku solveThis = new Sudoku();
+        solveThis.solve();
         new Graphical(solveThis, 3);
     }
 }
