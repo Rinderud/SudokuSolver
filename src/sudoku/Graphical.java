@@ -25,11 +25,11 @@ public class Graphical {
         { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
         { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
 
-    public Graphical(Sudoku sudoku, int bigness) {
+    public Graphical(JacobsTest sudoku, int bigness) {
         SwingUtilities.invokeLater(() -> createWindow(sudoku, bigness));
     }
 
-    private void createWindow(Sudoku sudoku, int n) {
+    private void createWindow(JacobsTest sudoku, int n) {
         JFrame frame = new JFrame("Solving sodukus since 1999");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container windowPane = frame.getContentPane();
@@ -117,7 +117,7 @@ public class Graphical {
     }
 
     public static void main(String[] args) {
-        Sudoku solveThis = new Sudoku();
+        JacobsTest solveThis = new JacobsTest();
         solveThis.solve();
         new Graphical(solveThis, 3);
     }
