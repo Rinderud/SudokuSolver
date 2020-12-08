@@ -2,9 +2,13 @@ package sudoku;
 
 public class Sudoku implements SudokuSolver {
 
-    private int[][] board = new int [9][9];
-    private int[][] boardCopy = new int [9][9]; // Om vi behöver ursprungsboard efter att ha ändrat i board.
+    private int[][] board;
+    private int[][] boardCopy; // Om vi behöver ursprungsboard efter att ha ändrat i board.
 
+    public Sudoku(){
+        board = new int [9][9];
+        boardCopy = new int [9][9];
+    }
     public Sudoku(int[][] solveBoard) {
         this.board = solveBoard;
         this.boardCopy = solveBoard; // Om vi behöver ursprungsboard efter att ha ändrat i board.
