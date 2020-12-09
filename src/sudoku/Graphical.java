@@ -26,11 +26,11 @@ public class Graphical {
             { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
             { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
 
-    public Graphical(JacobsTest sudoku) {
+    public Graphical(Sudoku sudoku) {
         SwingUtilities.invokeLater(() -> createWindow(sudoku));
     }
 
-    private void createWindow(JacobsTest sudoku) {
+    private void createWindow(Sudoku sudoku) {
         JFrame frame = new JFrame("Solving sodukus since 1999");
         Container container = frame.getContentPane();
         Dimension buttonDimension = new Dimension(450, 30);
@@ -111,7 +111,7 @@ public class Graphical {
     }
 
     public static void main(String[] args) {
-        JacobsTest solveThis = new JacobsTest();
+        Sudoku solveThis = new Sudoku();
         solveThis.setNumbers(board);
         new Graphical(solveThis);
     }
