@@ -14,7 +14,7 @@ public class Sudoku implements SudokuSolver {
         this.boardCopy = solveBoard; // Om vi behöver ursprungsboard efter att ha ändrat i board.
     }
 
-    private boolean solve(int x, int y) {
+    /* private boolean solve(int x, int y) {
         if (getNumber(x, y) != 0){           // Om det redan är ifyllt
             if(x == 8){                 // Om det är sista i x-led
                 if (y == 8){            // Om det är sista i y-led
@@ -45,19 +45,48 @@ public class Sudoku implements SudokuSolver {
             }
         }
         return false;
-    }
+    } */
+
+    private boolean solve(int x, int y) {
+		int newX = x;
+		int newY;
+		if (y != 8) {
+			newY = y + 1;
+
+		} else {
+			newY = 0;
+			newX = x + 1;
+		}
+		if (x == 9) {
+			return true;
+		}
+		if (boardCopy[x][y] == 0) {
+			for (int i = 1; i < 10; i++) {
+				if (checkRules(x, y, i)) {
+					board[x][y] = i;
+					if (solve(newX, newY)) {
+						return true;
+					} else {
+						board[x][y] = 0;
+					}
+				}
+			}
+			return false;
+        } 
+		return solve(newX,newY);
+	}
 
     /** Returns true if no rule has been broken, else false */
     private boolean checkRules(int x, int y, int val) {
         // rad
         for (int i = 0; i < 9; i++) {
-            if ( y != i && board[x][i] == val) {
+            if (board[x][i] == val) {
                 return false;
             }
         }
         // col
         for (int i = 0; i < 9; i++) {
-            if ( x != i && board[i][y] == val) {
+            if (board[i][y] == val) {
                 return false;
             }
         }
@@ -84,6 +113,14 @@ public class Sudoku implements SudokuSolver {
         }
 
         return true;
+    }
+    public void displayBoard()
+    {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++)
+                System.out.print(board[i][j] + " ");
+            System.out.println();
+        }
     }
 
     @Override
