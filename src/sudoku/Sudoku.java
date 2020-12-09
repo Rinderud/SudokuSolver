@@ -110,6 +110,57 @@ public class Sudoku implements SudokuSolver {
 
         return true;
     }
+
+    /**
+     * 
+     * @param row
+     * @param number
+     * @return if the row contains number
+     */
+    private boolean rowContains(int row, int number) {
+        for (int col = 0; col < 9; col++) {
+            if (board[row][col] == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 
+     * @param col
+     * @param number
+     * @return if column contains number
+     */
+    private boolean colContains(int col, int number) {
+        for (int row = 0; row < 9; row++) {
+            if (board[row][col] == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 
+     * @param row
+     * @param col
+     * @param number
+     * @return if the 3x3 box that row and col is in contains number
+     */
+    private boolean boxContains(int row, int col, int number) {
+        int r = row - row % 3;
+        int c = col - col % 3;
+        for (int i = r; i < r + 3; i++) {
+            for (int j = c; j < c + 3; j++) {
+                if (board[i][j] == number) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void displayBoard()
     {
         for (int i = 0; i < 9; i++) {
