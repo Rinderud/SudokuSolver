@@ -27,12 +27,12 @@ public class Graphical {
             { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
 
     private final static int[][] boardSolvable = new int[][] {
-            { 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 2, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 3, 4, 0, 0, 0, 0, 0 },
+            { 1, 0, 0, 2, 0, 0, 0, 0, 0 },
+            { 0, 2, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 3, 0, 4, 0, 0, 0, 0 },
+            { 0, 0, 4, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 7, 8, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
@@ -71,6 +71,7 @@ public class Graphical {
         solveButton.addActionListener(event -> {
             sudoku.solve();
             updateTextFields(textFields, sudoku.getNumbers());
+            sudoku.displayBoard();
         });
         clearButton.addActionListener(event -> {
             sudoku.clear();
@@ -125,6 +126,5 @@ public class Graphical {
         Sudoku solveThis = new Sudoku();
         solveThis.setNumbers(boardSolvable);
         new Graphical(solveThis);
-        solveThis.displayBoard();
     }
 }

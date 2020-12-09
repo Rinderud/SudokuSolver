@@ -149,6 +149,7 @@ public class Sudoku implements SudokuSolver {
     public void setNumber(int row, int col, int number) {
         if (number > 0 && number < 10) {
             board[row][col] = number;
+            boardCopy[row][col] = number;
         }
         else return;
     }
@@ -205,6 +206,7 @@ public class Sudoku implements SudokuSolver {
         for ( int row = 0; row < 9; row++) {
             for ( int col = 0; col < 9; col++) {
                 board[row][col] = numbers[row][col];
+                boardCopy[row][col] = numbers[row][col];
             }
         }
     }
