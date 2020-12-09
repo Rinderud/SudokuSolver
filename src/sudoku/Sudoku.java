@@ -62,7 +62,7 @@ public class Sudoku implements SudokuSolver {
 		}
 		if (boardCopy[x][y] == 0) {
 			for (int i = 1; i < 10; i++) {
-				if (checkRules(x, y, i)) {
+				if (trySetNumber(x, y, i)) {
 					board[x][y] = i;
 					if (solve(newX, newY)) {
 						return true;
@@ -75,11 +75,6 @@ public class Sudoku implements SudokuSolver {
         } 
 		return solve(newX,newY);
 	}
-
-    /** Returns true if no rule has been broken, else false */
-    private boolean checkRules(int row, int col, int val) {
-        return !(rowContains(row, val) || colContains(col, val) || boxContains(row, col, val));
-    }
 
     /**
      * 
@@ -155,12 +150,18 @@ public class Sudoku implements SudokuSolver {
         if (number > 0 && number < 10) {
             board[row][col] = number;
         }
-        else return; // fundera på detta
+        else return;
     }
 
     @Override
     public boolean trySetNumber(int row, int col, int number) {
-        return !(rowContains(row, number) || colContains(col, number) || boxContains(row, col, number));
+        if ( board[row][col] != 0) {
+            return false;
+        } 
+        else {
+            return !(rowContains(row, number) || colContains(col, number) || boxContains(row, col, number));
+        }
+        
     }
 
     @Override
