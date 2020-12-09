@@ -73,6 +73,7 @@ public class Graphical {
         updateTextFields(textFields, sudoku.getNumbers());
 
         solveButton.addActionListener(event -> {
+            setTextFields(textFields, sudoku);
             if (sudoku.solve()){
                 updateTextFields(textFields, sudoku.getNumbers());
             }
