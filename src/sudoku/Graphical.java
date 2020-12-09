@@ -133,6 +133,9 @@ public class Graphical {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
                 textFields[row][col].setText(Integer.toString(grid[row][col]));
+                if (grid[row][col] == 0) {
+                    textFields[row][col].setText(" ");
+                }
             }
         }
     }
