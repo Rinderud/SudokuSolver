@@ -122,6 +122,14 @@ public class Graphical {
         }
     }
 
+    private void setTextFields(JTextField[][] textFields, Sudoku sudoku) {
+        for (int row = 0; row < textFields.length; row++) {
+            for (int col = 0; col < textFields[row].length; col++) {
+                sudoku.setNumber(row, col, Integer.parseInt(textFields[row][col].getText()));
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Sudoku solveThis = new Sudoku();
         solveThis.setNumbers(boardSolvable);
