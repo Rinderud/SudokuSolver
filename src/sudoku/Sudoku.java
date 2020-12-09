@@ -190,7 +190,7 @@ public class Sudoku implements SudokuSolver {
     public int[][] getNumbers() {
         int[][] tempReturn = new int[9][9];
         for ( int i = 0; i < 9; i++) {
-            for ( int j = 0; i < 9; i++) {
+            for ( int j = 0; i < 9; j++) {
                 tempReturn[i][j] = board[i][j];
             }
         }
@@ -200,7 +200,7 @@ public class Sudoku implements SudokuSolver {
     @Override
     public void setNumbers(int[][] numbers) {
         for ( int i = 0; i < 9; i++) {
-            for ( int j = 0; i < 9; i++) {
+            for ( int j = 0; i < 9; j++) {
                 board[i][j] = numbers[i][j];
             }
         }
