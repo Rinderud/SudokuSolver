@@ -1,9 +1,9 @@
 # SudokuSolver
-Inlämningsuppgift för EDAA01 2020
 
+Inlämningsuppgift för EDAA01 2020
 
 - [ x ] Interfacet SodukuSolver
 - [ x ] Lösaren
 - [ ] Automatisk testning
 - [ ] JavaDoc
-- [ ] Grafiskt interface
+- [ x ] Grafiskt interface
