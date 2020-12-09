@@ -138,7 +138,7 @@ public class Sudoku implements SudokuSolver {
     @Override
     public void clear() { // Sätter alla rutor till 0
         for ( int i = 0; i < 9; i++) {
-            for ( int j = 0; i < 9; i++) {
+            for ( int j = 0; i < 9; j++) {
                 board[i][j] = 0; // Hur representeras en tom ruta?
             }
         }
