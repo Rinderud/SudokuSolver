@@ -8,13 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class sudokuTest {
-    private int[][] board1;
-    private int[][] board2;
-    private Sudoku sudoku;
+    private int[][] cantSolve;
+    private int[][] canSolve;
+    private Sudoku sudokuCantSolve;
+    private Sudoku sudokuCanSolve;
+    private Sudoku emptySudoku;
 
     @Before
     public void setUp() throws Exception {
-        board1 = new int[][] {
+        cantSolve = new int[][] {
                 { 2, 7, 4, 0, 9, 0, 6, 5, 3 },
                 { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
                 { 0, 4, 0, 6, 1, 8, 3, 9, 7 },
@@ -24,7 +26,7 @@ public class sudokuTest {
                 { 4, 5, 7, 0, 8, 0, 2, 3, 6 },
                 { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
                 { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
-        board2 = new int[][] {
+        canSolve = new int[][] {
                 { 2, 7, 4, 0, 9, 0, 6, 5, 0 },
                 { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
                 { 0, 4, 0, 6, 1, 8, 3, 9, 7 },
@@ -34,14 +36,18 @@ public class sudokuTest {
                 { 4, 5, 7, 0, 8, 0, 2, 3, 6 },
                 { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
                 { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
-        sudoku = new Sudoku(board1);
+        sudokuCantSolve = new Sudoku(cantSolve);
+        sudokuCanSolve = new Sudoku(canSolve);
+        emptySudoku = new Sudoku();
     }
 
     @After
     public void tearDown() throws Exception {
-        sudoku = null;
-        board1 = null;
-        board2 = null;
+        cantSolve = null;
+        canSolve = null;
+        sudokuCantSolve = null;
+        sudokuCanSolve = null;
+        emptySudoku = null;
     }
 
     @Test
@@ -60,13 +66,15 @@ public class sudokuTest {
     }
 
     @Test
-    public void testCheckRules() {
-        //assertTrue("check things", sudoku.trySetNumber(row, col, number));
-    }
-
-    @Test
     public void testClear() {
-        fail("Not yet implemented");
+        sudokuCanSolve.clear();
+        int[][] emptyBoard = new int[9][9];
+        for (int i = 0; i < emptyBoard.length; i++) {
+            for (int j = 0; j < emptyBoard.length; j++) {
+                emptyBoard[i][j] = 0;
+            }
+        }
+        assertArrayEquals(emptyBoard, sudokuCanSolve.getNumbers());
     }
 
     @Test
@@ -96,7 +104,8 @@ public class sudokuTest {
 
     @Test
     public void testSetNumbers() {
-        fail("Not yet implemented");
+        emptySudoku.setNumbers(canSolve);
+        assertArrayEquals(canSolve, emptySudoku.getNumbers());
     }
 
 }
