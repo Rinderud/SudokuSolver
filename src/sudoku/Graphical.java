@@ -26,6 +26,17 @@ public class Graphical {
             { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
             { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
 
+    private final static int[][] boardSolvable = new int[][] {
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 2, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 3, 4, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+
     public Graphical(Sudoku sudoku) {
         SwingUtilities.invokeLater(() -> createWindow(sudoku));
     }
@@ -112,7 +123,8 @@ public class Graphical {
 
     public static void main(String[] args) {
         Sudoku solveThis = new Sudoku();
-        solveThis.setNumbers(board);
+        solveThis.setNumbers(boardSolvable);
         new Graphical(solveThis);
+        solveThis.displayBoard();
     }
 }
