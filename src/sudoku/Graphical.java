@@ -69,6 +69,7 @@ public class Graphical {
         updateTextFields(textFields, sudoku.getNumbers());
 
         solveButton.addActionListener(event -> {
+            setTextFields(textFields, sudoku);
             //if (sudoku.solve()){
                 sudoku.solve();
                 updateTextFields(textFields, sudoku.getNumbers());
@@ -119,6 +120,14 @@ public class Graphical {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
                 textFields[row][col].setText(Integer.toString(grid[row][col]));
+            }
+        }
+    }
+
+    private void setTextFields(JTextField[][] textFields, Sudoku sudoku) {
+        for (int row = 0; row < textFields.length; row++) {
+            for (int col = 0; col < textFields[row].length; col++) {
+                sudoku.setNumber(row, col, Integer.parseInt(textFields[row][col].getText()));
             }
         }
     }
