@@ -139,7 +139,8 @@ public class Sudoku implements SudokuSolver {
     public void clear() { // Sätter alla rutor till 0
         for ( int row = 0; row < 9; row++) {
             for ( int col = 0; col < 9; col++) {
-                board[row][col] = 0; // Hur representeras en tom ruta?
+                board[row][col] = 0;
+                boardCopy[row][col] = 0; // Hur representeras en tom ruta?
             }
         }
 
