@@ -5,76 +5,44 @@ public class Sudoku implements SudokuSolver {
     private int[][] board;
     private int[][] boardCopy; // Om vi behöver ursprungsboard efter att ha ändrat i board.
 
-    public Sudoku(){
-        board = new int [9][9];
-        boardCopy = new int [9][9];
+    public Sudoku() {
+        board = new int[9][9];
+        boardCopy = new int[9][9];
     }
+
     public Sudoku(int[][] solveBoard) {
         this.board = solveBoard;
         this.boardCopy = solveBoard; // Om vi behöver ursprungsboard efter att ha ändrat i board.
     }
 
-    /* private boolean solve(int x, int y) {
-        if (getNumber(x, y) != 0){           // Om det redan är ifyllt
-            if(x == 8){                 // Om det är sista i x-led
-                if (y == 8){            // Om det är sista i y-led
-                    return true;        // KLAR
-                }else{
-                    return solve(0, y + 1);    // Forstsätt på nästa rad
-                }
-            }else{
-                return solve(x + 1, y);        // Fortsätt i nästa kolumn
-            }
-        }
-
-        for (int num = 1; num <= 9; num++){
-            if (trySetNumber(x, y, num)){   // Om det går att sätta där
-                setNumber(x, y, num);       // Gör det
-                if(x == 8){                 // Om det är sista i x-led
-                    if (y == 8){            // Om det är sista i y-led
-                        return true;        // KLAR
-                    }
-                    if (solve(0, y + 1)){   // Forstsätt på nästa rad
-                        return true;
-                    }
-                }else{
-                    if (solve(x + 1, y)){        // Fortsätt i nästa kolumn
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    } */
-
     private boolean solve(int row, int col) {
-		int newX = row;
-		int newY;
-		if (col != 8) {
-			newY = col + 1;
+        int newX = row;
+        int newY;
+        if (col != 8) {
+            newY = col + 1;
 
-		} else {
-			newY = 0;
-			newX = row + 1;
-		}
-		if (row == 9) {
-			return true;
-		}
-		if (boardCopy[row][col] == 0) {
-			for (int number = 1; number < 10; number++) {
-				if (trySetNumber(row, col, number)) {
-					board[row][col] = number;
-					if (solve(newX, newY)) {
-						return true;
-					} else {
-						board[row][col] = 0;
-					}
-				}
-			}
-			return false;
-        } 
-		return solve(newX,newY);
-	}
+        } else {
+            newY = 0;
+            newX = row + 1;
+        }
+        if (row == 9) {
+            return true;
+        }
+        if (boardCopy[row][col] == 0) {
+            for (int number = 1; number < 10; number++) {
+                if (trySetNumber(row, col, number)) {
+                    board[row][col] = number;
+                    if (solve(newX, newY)) {
+                        return true;
+                    } else {
+                        board[row][col] = 0;
+                    }
+                }
+            }
+            return false;
+        }
+        return solve(newX, newY);
+    }
 
     /**
      * 
@@ -126,8 +94,7 @@ public class Sudoku implements SudokuSolver {
         return false;
     }
 
-    public void displayBoard()
-    {
+    public void displayBoard() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++)
                 System.out.print(board[i][j] + " ");
@@ -137,8 +104,8 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public void clear() { // Sätter alla rutor till 0
-        for ( int row = 0; row < 9; row++) {
-            for ( int col = 0; col < 9; col++) {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
                 board[row][col] = 0;
                 boardCopy[row][col] = 0; // Hur representeras en tom ruta?
             }
@@ -151,22 +118,21 @@ public class Sudoku implements SudokuSolver {
         if (number > 0 && number < 10) {
             board[row][col] = number;
             boardCopy[row][col] = number;
-        }
-        else return;
+        } else
+            return;
     }
 
     @Override
     public boolean trySetNumber(int row, int col, int number) {
-        if ( !(number > 0 && number < 10)) {
+        if (!(number > 0 && number < 10)) {
             return false;
         }
-        if ( board[row][col] != 0) {
+        if (board[row][col] != 0) {
             return false;
-        } 
-        else {
+        } else {
             return !(rowContains(row, number) || colContains(col, number) || boxContains(row, col, number));
         }
-        
+
     }
 
     @Override
@@ -183,7 +149,7 @@ public class Sudoku implements SudokuSolver {
     public boolean solve() {
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
-                if(!solve(row, col)){
+                if (!solve(row, col)) {
                     return true;
                 }
             }
@@ -194,8 +160,8 @@ public class Sudoku implements SudokuSolver {
     @Override
     public int[][] getNumbers() {
         int[][] tempReturn = new int[9][9];
-        for ( int row = 0; row < 9; row++) {
-            for ( int col = 0; col < 9; col++) {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
                 tempReturn[row][col] = board[row][col];
             }
         }
@@ -204,8 +170,8 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public void setNumbers(int[][] numbers) {
-        for ( int row = 0; row < 9; row++) {
-            for ( int col = 0; col < 9; col++) {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
                 board[row][col] = numbers[row][col];
                 boardCopy[row][col] = numbers[row][col];
             }
