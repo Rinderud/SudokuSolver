@@ -69,9 +69,9 @@ public class sudokuTest {
     public void testClear() {
         sudokuCanSolve.clear();
         int[][] emptyBoard = new int[9][9];
-        for (int i = 0; i < emptyBoard.length; i++) {
-            for (int j = 0; j < emptyBoard.length; j++) {
-                emptyBoard[i][j] = 0;
+        for (int row = 0; row < emptyBoard.length; row++) {
+            for (int col = 0; col < emptyBoard[row].length; col++) {
+                emptyBoard[row][col] = 0;
             }
         }
         assertArrayEquals(emptyBoard, sudokuCanSolve.getNumbers());
@@ -79,27 +79,52 @@ public class sudokuTest {
 
     @Test
     public void testSetNumber() {
-        fail("Not yet implemented");
+        for (int row = 0; row < canSolve.length; row++) {
+            for (int col = 0; col < canSolve[row].length; col++) {
+                for (int i = 1; i <= 9; i++) {
+                    sudokuCanSolve.setNumber(row, col, i);
+                    assertEquals(i, sudokuCanSolve.getNumber(row, col));
+                }
+            }
+        }
+        emptySudoku.setNumber(4, 2, 42);
+        assertFalse(emptySudoku.getNumber(4, 2) == 42);;
     }
 
     @Test
     public void testTrySetNumber() {
-        fail("Not yet implemented");
+        assertFalse(emptySudoku.trySetNumber(4, 2, 42));
+        sudokuCanSolve.setNumber(4, 2, 1);
+        assertFalse(sudokuCanSolve.trySetNumber(4, 2, 1));
+        assertTrue(emptySudoku.trySetNumber(6, 5, 3));
     }
 
     @Test
     public void testGetNumber() {
-        fail("Not yet implemented");
+        for (int row = 0; row < canSolve.length; row++) {
+            for (int col = 0; col < canSolve[row].length; col++) {
+                for (int i = 1; i <= 9; i++) {
+                    sudokuCanSolve.setNumber(row, col, i);
+                    assertEquals(i, sudokuCanSolve.getNumber(row, col));
+                }
+            }
+        }
+        assertEquals(0, emptySudoku.getNumber(4, 2));
     }
 
     @Test
     public void testRemoveNumber() {
-        fail("Not yet implemented");
+        for (int row = 0; row < canSolve.length; row++) {
+            for (int col = 0; col < canSolve[row].length; col++) {
+                sudokuCanSolve.removeNumber(row, col);
+                assertEquals(0, sudokuCanSolve.getNumber(row, col));
+            }
+        }
     }
 
     @Test
     public void testGetNumbers() {
-        fail("Not yet implemented");
+        assertArrayEquals(canSolve, sudokuCanSolve.getNumbers());
     }
 
     @Test
