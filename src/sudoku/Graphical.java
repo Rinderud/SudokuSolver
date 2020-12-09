@@ -41,6 +41,10 @@ public class Graphical {
         SwingUtilities.invokeLater(() -> createWindow(sudoku));
     }
 
+    /**
+     * Creates the window that displays the sudoku and the application starts
+     * @param sudoku
+     */
     private void createWindow(Sudoku sudoku) {
         JFrame frame = new JFrame("Solving sodukus since 1999");
         Container container = frame.getContentPane();
@@ -92,6 +96,11 @@ public class Graphical {
         frame.setVisible(true);
     }
 
+    /**
+     * Fills the array textFields with textFields and puts them in the segmentPanel
+     * @param textFields
+     * @param segmentPanel
+     */
     private void createTextFields(JTextField[][] textFields, JPanel segmentPanel) {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
@@ -114,6 +123,11 @@ public class Graphical {
         }
     }
 
+    /**
+     * Updates the text in the textFields to the values in grid
+     * @param textFields
+     * @param grid
+     */
     private void updateTextFields(JTextField[][] textFields, int[][] grid) {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
@@ -122,6 +136,11 @@ public class Graphical {
         }
     }
 
+    /**
+     * Sets the values in the textFields to the sudoku
+     * @param textFields
+     * @param sudoku
+     */
     private void setTextFields(JTextField[][] textFields, Sudoku sudoku) {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
