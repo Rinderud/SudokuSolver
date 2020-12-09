@@ -89,6 +89,12 @@ public class Graphical {
                 textField.setFont(new Font("Serif", Font.BOLD, 50));
                 textField.setPreferredSize(preferredSize);
                 textField.setHorizontalAlignment(0);
+                textField.setBackground(Color.orange);
+                if (col == col%3+3 && row != row%3+3){
+                    textField.setBackground(Color.white);
+                }else if (col != col%3+3 && row == row%3+3){
+                    textField.setBackground(Color.white);
+                }
                 textField.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
                 textFields[row][col] = textField;
                 segmentPanel.add(textField);
