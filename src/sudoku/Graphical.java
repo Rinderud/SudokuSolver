@@ -69,10 +69,9 @@ public class Graphical {
         updateTextFields(textFields, sudoku.getNumbers());
 
         solveButton.addActionListener(event -> {
-            //if (sudoku.solve()){
-                sudoku.solve();
+            if (sudoku.solve()){
                 updateTextFields(textFields, sudoku.getNumbers());
-            //}
+            }
         });
         clearButton.addActionListener(event -> {
             sudoku.clear();

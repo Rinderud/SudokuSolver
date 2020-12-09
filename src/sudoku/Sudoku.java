@@ -184,11 +184,11 @@ public class Sudoku implements SudokuSolver {
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
                 if(!solve(row, col)){
-                    return false;
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     @Override
