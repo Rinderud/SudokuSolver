@@ -134,7 +134,7 @@ public class Graphical {
             for (int col = 0; col < textFields[row].length; col++) {
                 textFields[row][col].setText(Integer.toString(grid[row][col]));
                 if (grid[row][col] == 0) {
-                    textFields[row][col].setText(" ");
+                    textFields[row][col].setText("");
                 }
             }
         }
@@ -148,7 +148,11 @@ public class Graphical {
     private void setTextFields(JTextField[][] textFields, Sudoku sudoku) {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
-                sudoku.setNumber(row, col, Integer.parseInt(textFields[row][col].getText()));
+                if (textFields[row][col].getText().equals("")){
+                    sudoku.setNumber(row, col, 0);
+                }else{
+                    sudoku.setNumber(row, col, Integer.parseInt(textFields[row][col].getText()));
+                }
             }
         }
     }
