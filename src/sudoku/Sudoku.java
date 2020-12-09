@@ -77,38 +77,8 @@ public class Sudoku implements SudokuSolver {
 	}
 
     /** Returns true if no rule has been broken, else false */
-    private boolean checkRules(int x, int y, int val) {
-        if (board[x][y] != 0){
-            return false;
-        }
-
-        // rad
-        for (int i = 0; i < 9; i++) {
-            if (board[x][i] == val) {
-                return false;
-            }
-        }
-        // col
-        for (int i = 0; i < 9; i++) {
-            if (board[i][y] == val) {
-                return false;
-            }
-        }
-
-        // Lägg till check för 3x3.
-        int row = x - x%3;
-        int col = y - y%3;
-        for (int i = row; i < row+3; i++) {
-            for (int j = col; j < col+3; j++) {
-                if (board[i][j] == val) {
-                    return false;
-                }
-            
-            }
-            
-        }
-
-        return true;
+    private boolean checkRules(int row, int col, int val) {
+        return !(rowContains(row, val) || colContains(col, val) || boxContains(row, col, val));
     }
 
     /**
@@ -190,11 +160,7 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean trySetNumber(int row, int col, int number) {
-        if (checkRules(row,col,number)) {
-            return true;
-        }else{
-            return false;
-        }
+        return !(rowContains(row, number) || colContains(col, number) || boxContains(row, col, number));
     }
 
     @Override
