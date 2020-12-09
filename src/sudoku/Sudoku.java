@@ -155,6 +155,9 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean trySetNumber(int row, int col, int number) {
+        if ( !(number > 0 && number < 10)) {
+            return false;
+        }
         if ( board[row][col] != 0) {
             return false;
         } 
