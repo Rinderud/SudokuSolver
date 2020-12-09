@@ -47,27 +47,27 @@ public class Sudoku implements SudokuSolver {
         return false;
     } */
 
-    private boolean solve(int x, int y) {
-		int newX = x;
+    private boolean solve(int row, int col) {
+		int newX = row;
 		int newY;
-		if (y != 8) {
-			newY = y + 1;
+		if (col != 8) {
+			newY = col + 1;
 
 		} else {
 			newY = 0;
-			newX = x + 1;
+			newX = row + 1;
 		}
-		if (x == 9) {
+		if (row == 9) {
 			return true;
 		}
-		if (boardCopy[x][y] == 0) {
-			for (int i = 1; i < 10; i++) {
-				if (trySetNumber(x, y, i)) {
-					board[x][y] = i;
+		if (boardCopy[row][col] == 0) {
+			for (int number = 1; number < 10; number++) {
+				if (trySetNumber(row, col, number)) {
+					board[row][col] = number;
 					if (solve(newX, newY)) {
 						return true;
 					} else {
-						board[x][y] = 0;
+						board[row][col] = 0;
 					}
 				}
 			}
@@ -137,9 +137,9 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public void clear() { // Sätter alla rutor till 0
-        for ( int i = 0; i < 9; i++) {
-            for ( int j = 0; i < 9; j++) {
-                board[i][j] = 0; // Hur representeras en tom ruta?
+        for ( int row = 0; row < 9; row++) {
+            for ( int col = 0; col < 9; col++) {
+                board[row][col] = 0; // Hur representeras en tom ruta?
             }
         }
 
@@ -189,9 +189,9 @@ public class Sudoku implements SudokuSolver {
     @Override
     public int[][] getNumbers() {
         int[][] tempReturn = new int[9][9];
-        for ( int i = 0; i < 9; i++) {
-            for ( int j = 0; i < 9; j++) {
-                tempReturn[i][j] = board[i][j];
+        for ( int row = 0; row < 9; row++) {
+            for ( int col = 0; col < 9; col++) {
+                tempReturn[row][col] = board[row][col];
             }
         }
         return tempReturn;
@@ -199,9 +199,9 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public void setNumbers(int[][] numbers) {
-        for ( int i = 0; i < 9; i++) {
-            for ( int j = 0; i < 9; j++) {
-                board[i][j] = numbers[i][j];
+        for ( int row = 0; row < 9; row++) {
+            for ( int col = 0; col < 9; col++) {
+                board[row][col] = numbers[row][col];
             }
         }
     }
