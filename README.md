@@ -6,4 +6,5 @@ Inlämningsuppgift för EDAA01 2020
 - [ x ] Lösaren
 - [ ] Automatisk testning
 - [ ] JavaDoc
-- [ x ] Grafiskt interface
+- [ ] Grafiskt interface
+    Man ska endast kunna skriva 1-9 eller "".
