@@ -110,11 +110,15 @@ public class Sudoku implements SudokuSolver {
     private boolean legalBoard(){
         for(int row = 0; row < 9; row++){
             for(int col = 0; col < 9; col++) {
-                if(boardCopy[row][col] != 0){
-                    if((rowContains(row, boardCopy[row][col]) || colContains(col, boardCopy[row][col]) || boxContains(row, col, boardCopy[row][col]))){
+                int number = board[row][col];
+                if(number != 0){
+                    board[row][col] = 0;
+                    if (!trySetNumber(row, col, number)){
+                        board[row][col] = number;
                         return false;
+                    }else{
+                        board[row][col] = number;
                     }
-                    else return true;
                 }
             }
         }
