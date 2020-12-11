@@ -12,6 +12,7 @@ import javax.swing.InputVerifier;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -70,6 +71,8 @@ public class Graphical {
             setTextFields(textFields, sudoku);
             if (sudoku.solve()) {
                 updateTextFields(textFields, sudoku.getNumbers());
+            }else{
+                JOptionPane.showMessageDialog(solveButton, "Unsolvable sudoku", "Could not solve", JOptionPane.ERROR_MESSAGE);
             }
         });
         clearButton.addActionListener(event -> {
