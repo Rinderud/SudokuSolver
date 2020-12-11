@@ -1,7 +1,6 @@
 package sudoku;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
@@ -79,19 +78,25 @@ public class sudokuTest {
                 }
             }
         }
-        emptySudoku.setNumber(4, 2, 42);
-        assertFalse(emptySudoku.getNumber(4, 2) == 42);
         ;
     }
 
     @Test
     public void testTrySetNumber() {
-        assertFalse(emptySudoku.trySetNumber(4, 2, 42));
         sudokuCanSolve.setNumber(4, 2, 1);
         assertFalse(sudokuCanSolve.trySetNumber(4, 2, 1));
         assertTrue(emptySudoku.trySetNumber(6, 5, 3));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalArgumentTrySetNumber(){
+        emptySudoku.trySetNumber(4, 2, 42);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalArgumentSetNumber(){
+        emptySudoku.setNumber(4, 2, 42);
+    }
     @Test
     public void testGetNumber() {
         for (int row = 0; row < canSolve.length; row++) {

@@ -167,9 +167,6 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean trySetNumber(int row, int col, int number) {
-        if (!(number > 0 && number < 10)) {
-            return false;
-        }
         if (row < 0 || row > 8 || col < 0 || col > 8 || number < 0 || number > 9) {
             throw new IllegalArgumentException();
         }
