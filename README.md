@@ -4,11 +4,11 @@ Inlämningsuppgift för EDAA01 2020
 
 To-Do
 
-- [ x ] Interfacet SodukuSolver
-- [ x ] Lösaren
+- [x] Interfacet SodukuSolver
+- [x] Lösaren
 - [ ] Automatisk testning
-- [ x ] JavaDoc
-- [ ] Grafiskt interface
+- [x] JavaDoc
+- [x] Grafiskt interface
 
 Förbättringspunkter
 
