@@ -107,16 +107,16 @@ public class Sudoku implements SudokuSolver {
         return false;
     }
 
-    private boolean legalBoard(){
-        for(int row = 0; row < 9; row++){
-            for(int col = 0; col < 9; col++) {
+    private boolean legalBoard() {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
                 int number = board[row][col];
-                if(number != 0){
+                if (number != 0) {
                     board[row][col] = 0;
-                    if (!trySetNumber(row, col, number)){
+                    if (!trySetNumber(row, col, number)) {
                         board[row][col] = number;
                         return false;
-                    }else{
+                    } else {
                         board[row][col] = number;
                     }
                 }
@@ -190,7 +190,7 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean solve() {
-        if(legalBoard()){
+        if (legalBoard()) {
             for (int row = 0; row < board.length; row++) {
                 for (int col = 0; col < board[row].length; col++) {
                     if (!solve(row, col)) {
@@ -199,12 +199,11 @@ public class Sudoku implements SudokuSolver {
                 }
             }
             return false;
-        }
-        else {
+        } else {
             System.out.println("illegal board");
             return false;
         }
-        
+
     }
 
     @Override
