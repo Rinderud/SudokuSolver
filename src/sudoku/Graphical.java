@@ -17,10 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-
 /**
- * @author Jacob Rinderud & Linus Carlsson
- * Creates a graphical gui
+ * @author Jacob Rinderud & Linus Carlsson Creates a graphical gui
  */
 public class Graphical {
     private final static int[][] board = new int[][] { { 2, 7, 4, 0, 9, 0, 6, 5, 3 }, { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
@@ -39,6 +37,7 @@ public class Graphical {
 
     /**
      * Creates the window that displays the sudoku and the application starts
+     * 
      * @param sudoku
      */
     private void createWindow(Sudoku sudoku) {
@@ -71,8 +70,9 @@ public class Graphical {
             setTextFields(textFields, sudoku);
             if (sudoku.solve()) {
                 updateTextFields(textFields, sudoku.getNumbers());
-            }else{
-                JOptionPane.showMessageDialog(solveButton, "Unsolvable sudoku", "Could not solve", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(solveButton, "Unsolvable sudoku", "Could not solve",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
         clearButton.addActionListener(event -> {
