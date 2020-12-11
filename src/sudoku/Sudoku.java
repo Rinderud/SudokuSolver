@@ -111,7 +111,7 @@ public class Sudoku implements SudokuSolver {
         for(int row = 0; row < 9; row++){
             for(int col = 0; col < 9; col++) {
                 if(boardCopy[row][col] != 0){
-                    if((rowContains(row, boardCopy[row][col]) || colContains(col, boardCopy[row][col]) || boxContains(row, col, boardCopy[row][col]))){
+                    if(!trySetNumber(row, col, boardCopy[row][col]){
                         return false;
                     }
                 }
