@@ -31,8 +31,6 @@ public class sudokuTest {
 
     @After
     public void tearDown() throws Exception {
-        cantSolve = null;
-        canSolve = null;
         sudokuCantSolve = null;
         sudokuCanSolve = null;
         emptySudoku = null;
