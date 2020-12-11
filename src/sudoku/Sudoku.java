@@ -107,6 +107,11 @@ public class Sudoku implements SudokuSolver {
         return false;
     }
 
+    /**
+     * Checks if the starting numbers are legal according to the Sudoku rules
+     * 
+     * @return true if the board is legal, false if the board is illegal.
+     */
     private boolean legalBoard() {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
@@ -125,6 +130,9 @@ public class Sudoku implements SudokuSolver {
         return true;
     }
 
+    /**
+     * Displays the board in the terminal
+     */
     public void displayBoard() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++)
