@@ -8,34 +8,29 @@ import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.InputVerifier;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+
+/**
+ * @author Jacob Rinderud & Linus Carlsson
+ * Creates a graphical gui
+ */
 public class Graphical {
-    private final static int[][] board = new int[][] {
-            { 2, 7, 4, 0, 9, 0, 6, 5, 3 },
-            { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
-            { 0, 4, 0, 6, 1, 8, 3, 9, 7 },
-            { 7, 6, 1, 0, 4, 0, 5, 2, 8 },
-            { 9, 3, 8, 7, 2, 5, 0, 6, 3 },
-            { 1, 0, 0, 4, 5, 6, 7, 8, 9 },
-            { 4, 5, 7, 0, 8, 0, 2, 3, 6 },
-            { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
+    private final static int[][] board = new int[][] { { 2, 7, 4, 0, 9, 0, 6, 5, 3 }, { 3, 9, 6, 5, 7, 4, 8, 0, 0 },
+            { 0, 4, 0, 6, 1, 8, 3, 9, 7 }, { 7, 6, 1, 0, 4, 0, 5, 2, 8 }, { 9, 3, 8, 7, 2, 5, 0, 6, 3 },
+            { 1, 0, 0, 4, 5, 6, 7, 8, 9 }, { 4, 5, 7, 0, 8, 0, 2, 3, 6 }, { 6, 8, 9, 2, 3, 7, 0, 4, 0 },
             { 0, 0, 5, 3, 6, 2, 9, 7, 4 } };
 
-    private final static int[][] boardSolvable = new int[][] {
-            { 1, 0, 0, 2, 0, 0, 0, 0, 0 },
-            { 0, 2, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 3, 0, 4, 0, 0, 0, 0 },
-            { 0, 0, 4, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 7, 8, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+    private final static int[][] boardSolvable = new int[][] { { 1, 0, 0, 2, 0, 0, 0, 0, 0 },
+            { 0, 2, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 3, 0, 4, 0, 0, 0, 0 }, { 0, 0, 4, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 7, 8, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
     public Graphical(Sudoku sudoku) {
         SwingUtilities.invokeLater(() -> createWindow(sudoku));
@@ -64,7 +59,6 @@ public class Graphical {
         segmentPanel.setPreferredSize(new Dimension(900, 900));
         solveButton.setPreferredSize(buttonDimension);
         clearButton.setPreferredSize(buttonDimension);
-        
 
         container.setLayout(new BorderLayout());
         segmentPanel.setLayout(gridLayout);
@@ -74,7 +68,7 @@ public class Graphical {
 
         solveButton.addActionListener(event -> {
             setTextFields(textFields, sudoku);
-            if (sudoku.solve()){
+            if (sudoku.solve()) {
                 updateTextFields(textFields, sudoku.getNumbers());
             }
         });
@@ -87,18 +81,16 @@ public class Graphical {
         buttonPanel.add(solveButton, BorderLayout.WEST);
         buttonPanel.add(clearButton, BorderLayout.EAST);
 
-        
-
         container.add(segmentPanel, BorderLayout.NORTH);
         container.add(buttonPanel, BorderLayout.SOUTH);
 
-        
         frame.pack();
         frame.setVisible(true);
     }
 
     /**
      * Fills the array textFields with textFields and puts them in the segmentPanel
+     * 
      * @param textFields
      * @param segmentPanel
      */
@@ -107,14 +99,27 @@ public class Graphical {
             for (int col = 0; col < textFields[row].length; col++) {
                 Dimension preferredSize = new Dimension(75, 75);
 
-                JTextField textField = new JTextField("X");
+                JTextField textField = new JTextField();
                 textField.setFont(new Font("Serif", Font.BOLD, 50));
                 textField.setPreferredSize(preferredSize);
                 textField.setHorizontalAlignment(0);
+                textField.setVerifyInputWhenFocusTarget(true);
+                textField.setInputVerifier(new InputVerifier() {
+
+                    @Override
+                    public boolean verify(JComponent input) {
+                        String text = ((JTextField) input).getText();
+                        if (text.equals("")) {
+                            return true;
+                        }
+                        return isDigit(text);
+                    }
+
+                });
                 textField.setBackground(Color.orange);
-                if (col == col%3+3 && row != row%3+3){
+                if (col == col % 3 + 3 && row != row % 3 + 3) {
                     textField.setBackground(Color.white);
-                }else if (col != col%3+3 && row == row%3+3){
+                } else if (col != col % 3 + 3 && row == row % 3 + 3) {
                     textField.setBackground(Color.white);
                 }
                 textField.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
@@ -125,7 +130,28 @@ public class Graphical {
     }
 
     /**
+     * Checks if text is a digit
+     * 
+     * @param text
+     * @return true if text is a single digit
+     */
+    private boolean isDigit(String text) {
+        int text1;
+        try {
+            text1 = Integer.parseInt(text);
+            if (text1 < 10 && text1 > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
      * Updates the text in the textFields to the values in grid
+     * 
      * @param textFields
      * @param grid
      */
@@ -142,16 +168,18 @@ public class Graphical {
 
     /**
      * Sets the values in the textFields to the sudoku
+     * 
      * @param textFields
      * @param sudoku
      */
     private void setTextFields(JTextField[][] textFields, Sudoku sudoku) {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
-                if (textFields[row][col].getText().equals("")){
-                    sudoku.setNumber(row, col, 0);
-                }else{
+                String text = textFields[row][col].getText();
+                if (isDigit(text)) {
                     sudoku.setNumber(row, col, Integer.parseInt(textFields[row][col].getText()));
+                } else {
+                    sudoku.setNumber(row, col, 0);
                 }
             }
         }

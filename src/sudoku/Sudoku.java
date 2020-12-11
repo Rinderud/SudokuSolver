@@ -1,5 +1,8 @@
 package sudoku;
 
+/**
+ * @author Jacob Rinderud & Linus Carlsson
+ */
 public class Sudoku implements SudokuSolver {
 
     private int[][] board;
@@ -15,6 +18,12 @@ public class Sudoku implements SudokuSolver {
         this.boardCopy = solveBoard; // Om vi behöver ursprungsboard efter att ha ändrat i board.
     }
 
+    /**
+     * Tries to fill the empty square with a legal number
+     * @param row
+     * @param col
+     * @return false if the empty square cannot be filled with a legal number
+     */
     private boolean solve(int row, int col) {
         int newX = row;
         int newY;
@@ -45,7 +54,7 @@ public class Sudoku implements SudokuSolver {
     }
 
     /**
-     * 
+     * Checks if the row contains the number
      * @param row
      * @param number
      * @return if the row contains number
@@ -60,7 +69,7 @@ public class Sudoku implements SudokuSolver {
     }
 
     /**
-     * 
+     * Checks if the column contains the number
      * @param col
      * @param number
      * @return if column contains number
@@ -75,7 +84,7 @@ public class Sudoku implements SudokuSolver {
     }
 
     /**
-     * 
+     * Checks if the 3x3 box that the row and column is within contains the number
      * @param row
      * @param col
      * @param number
