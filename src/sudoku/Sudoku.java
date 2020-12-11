@@ -20,6 +20,7 @@ public class Sudoku implements SudokuSolver {
 
     /**
      * Tries to fill the empty square with a legal number
+     * 
      * @param row
      * @param col
      * @return false if the empty square cannot be filled with a legal number
@@ -55,6 +56,7 @@ public class Sudoku implements SudokuSolver {
 
     /**
      * Checks if the row contains the number
+     * 
      * @param row
      * @param number
      * @return if the row contains number
@@ -70,6 +72,7 @@ public class Sudoku implements SudokuSolver {
 
     /**
      * Checks if the column contains the number
+     * 
      * @param col
      * @param number
      * @return if column contains number
@@ -85,6 +88,7 @@ public class Sudoku implements SudokuSolver {
 
     /**
      * Checks if the 3x3 box that the row and column is within contains the number
+     * 
      * @param row
      * @param col
      * @param number
