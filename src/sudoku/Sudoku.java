@@ -202,7 +202,7 @@ public class Sudoku implements SudokuSolver {
         if (legalBoard()) {
             for (int row = 0; row < board.length; row++) {
                 for (int col = 0; col < board[row].length; col++) {
-                    if (!solve(row, col)) {
+                    if (solve(row, col)) {
                         return true;
                     }
                 }
