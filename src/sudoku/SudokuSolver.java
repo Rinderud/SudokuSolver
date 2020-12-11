@@ -16,16 +16,25 @@ public interface SudokuSolver {
 	
 	/** Kollar om siffran number kan sättas i raden row och kolumnen col, 
 	 * om det inte går enligt spelreglerna returneras false 
+	 * @param row    The row
+	 * @param col    The column
+	 * @param number The digit to insert
 	 * @throws IllegalArgumentException if number not in [1..9] or row or col is outside the allowed range
 	 */
 	boolean trySetNumber(int row, int col, int number);
 	
-	/** Returnerar siffran på raden row och kolumnen col. 
+	/** Returnerar siffran på raden row och kolumnen col.
+	 * 
+	 * @param row    The row
+	 * @param col    The column 
 	 * @throws IllegalArgumentException if row or col is outside the allowed range 
 	 */
 	int getNumber(int row, int col);
 	
 	/** Tar bort siffran på raden row och kolumnen col. 
+	 * 
+	 * @param row    The row
+	 * @param col    The column 
 	 * @throws IllegalArgumentException if row or col is outside the allowed range
 	 */
 	void removeNumber(int row, int col);

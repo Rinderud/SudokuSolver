@@ -128,6 +128,9 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public void setNumber(int row, int col, int number) {
+        if (row < 0 || row > 8 || col < 0 || col > 8 || number < 0 || number > 9) {
+            throw new IllegalArgumentException();
+        }
         if (number > 0 && number < 10) {
             board[row][col] = number;
             boardCopy[row][col] = number;
@@ -137,6 +140,9 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean trySetNumber(int row, int col, int number) {
+        if (row < 0 || row > 8 || col < 0 || col > 8 || number < 0 || number > 9) {
+            throw new IllegalArgumentException();
+        }
         if (!(number > 0 && number < 10)) {
             return false;
         }
@@ -150,11 +156,17 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public int getNumber(int row, int col) {
+        if (row < 0 || row > 8 || col < 0 || col > 8) {
+            throw new IllegalArgumentException();
+        }
         return board[row][col];
     }
 
     @Override
     public void removeNumber(int row, int col) {
+        if (row < 0 || row > 8 || col < 0 || col > 8) {
+            throw new IllegalArgumentException();
+        }
         board[row][col] = 0; // vilket värde ska en tom ruta ha?
     }
 
@@ -185,6 +197,9 @@ public class Sudoku implements SudokuSolver {
     public void setNumbers(int[][] numbers) {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
+                if (numbers[row][col] < 0 || numbers[row][col] > 9) {
+                    throw new IllegalArgumentException();
+                }
                 board[row][col] = numbers[row][col];
                 boardCopy[row][col] = numbers[row][col];
             }
