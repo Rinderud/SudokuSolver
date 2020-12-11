@@ -6,7 +6,7 @@ Inlämningsuppgift för EDAA01 2020
 
 - [x] Interfacet SodukuSolver
 - [x] Lösaren
-- [ ] Automatisk testning
+- [x] Automatisk testning
 - [x] JavaDoc
 - [x] Grafiskt interface
 
