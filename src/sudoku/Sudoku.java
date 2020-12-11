@@ -107,6 +107,19 @@ public class Sudoku implements SudokuSolver {
         return false;
     }
 
+    private boolean legalBoard(){
+        for(int row = 0; row < 9; row++){
+            for(int col = 0; col < 9; col++) {
+                if(boardCopy[row][col] != 0){
+                    if((rowContains(row, boardCopy[row][col]) || colContains(col, boardCopy[row][col]) || boxContains(row, col, boardCopy[row][col]))){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     public void displayBoard() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++)
@@ -172,14 +185,21 @@ public class Sudoku implements SudokuSolver {
 
     @Override
     public boolean solve() {
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                if (!solve(row, col)) {
-                    return true;
+        if(legalBoard()){
+            for (int row = 0; row < board.length; row++) {
+                for (int col = 0; col < board[row].length; col++) {
+                    if (!solve(row, col)) {
+                        return true;
+                    }
                 }
             }
+            return false;
         }
-        return false;
+        else {
+            System.out.println("illegal board");
+            return false;
+        }
+        
     }
 
     @Override
