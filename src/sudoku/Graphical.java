@@ -139,6 +139,7 @@ public class Graphical {
                 return false;
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Illegal input. Only numbers 1-9 are allowed. Try again");
             return false;
         }
     }
