@@ -191,7 +191,8 @@ public class Sudoku implements SudokuSolver {
         if (row < 0 || row > 8 || col < 0 || col > 8) {
             throw new IllegalArgumentException();
         }
-        board[row][col] = 0; // vilket värde ska en tom ruta ha?
+        board[row][col] = 0;
+        boardCopy[row][col] = 0; // vilket värde ska en tom ruta ha?
     }
 
     @Override

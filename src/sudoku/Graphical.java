@@ -135,6 +135,7 @@ public class Graphical {
             if (text1 < 10 && text1 > 0) {
                 return true;
             } else {
+                JOptionPane.showMessageDialog(null, "Illegal input. Only numbers 1-9 are allowed. Try again");
                 return false;
             }
         } catch (Exception e) {
@@ -172,7 +173,7 @@ public class Graphical {
                 if (isDigit(text)) {
                     sudoku.setNumber(row, col, Integer.parseInt(textFields[row][col].getText()));
                 } else {
-                    sudoku.setNumber(row, col, 0);
+                    sudoku.removeNumber(row, col);
                 }
             }
         }
