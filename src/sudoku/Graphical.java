@@ -130,6 +130,9 @@ public class Graphical {
      */
     private boolean isDigit(String text) {
         int text1;
+        if (text.equals("")){
+            return false;
+        }
         try {
             text1 = Integer.parseInt(text);
             if (text1 < 10 && text1 > 0) {
