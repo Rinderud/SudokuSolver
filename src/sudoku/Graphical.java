@@ -171,7 +171,7 @@ public class Graphical {
             for (int col = 0; col < textFields[row].length; col++) {
                 String text = textFields[row][col].getText();
                 if (isDigit(text)) {
-                    sudoku.setNumber(row, col, Integer.parseInt(textFields[row][col].getText()));
+                    sudoku.setNumber(row, col, Integer.parseInt(text));
                 } else {
                     sudoku.removeNumber(row, col);
                 }
