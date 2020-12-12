@@ -31,7 +31,7 @@ public class Graphical {
      * @param sudoku
      */
     private void createWindow(Sudoku sudoku) {
-        JFrame frame = new JFrame("Solving sodukus since 1999");
+        JFrame frame = new JFrame("Jacob Rinderud & Linus Carlsson, Sudoku Solving Machine, år COVID-19.");
         Container container = frame.getContentPane();
         Dimension buttonDimension = new Dimension(450, 30);
         GridLayout gridLayout = new GridLayout(9, 9);
