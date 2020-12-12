@@ -198,12 +198,8 @@ public class Sudoku implements SudokuSolver {
     @Override
     public boolean solve() {
         if (legalBoard()) {
-            for (int row = 0; row < board.length; row++) {
-                for (int col = 0; col < board[row].length; col++) {
-                    if (solve(row, col)) {
-                        return true;
-                    }
-                }
+            if (solve(0, 0)) {
+                return true;
             }
             return false;
         } else {
