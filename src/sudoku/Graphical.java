@@ -167,8 +167,8 @@ public class Graphical {
     /**
      * Sets the values in the textFields to the sudoku
      * 
-     * @param textFields
-     * @param sudoku
+     * @param textFields    textFields used in the visual representation
+     * @param sudoku        SudokuSolver object
      */
     private void setTextFields(JTextField[][] textFields, SudokuSolver sudoku) {
         for (int row = 0; row < textFields.length; row++) {
