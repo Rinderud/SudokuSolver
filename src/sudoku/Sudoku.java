@@ -30,7 +30,6 @@ public class Sudoku implements SudokuSolver {
         int newY;
         if (col != 8) {
             newY = col + 1;
-
         } else {
             newY = 0;
             newX = row + 1;
