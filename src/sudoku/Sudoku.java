@@ -21,8 +21,8 @@ public class Sudoku implements SudokuSolver {
     /**
      * Tries to fill the empty square with a legal number
      * 
-     * @param row
-     * @param col
+     * @param row   The row to start at
+     * @param col   The column to start at
      * @return false if the empty square cannot be filled with a legal number
      */
     private boolean solve(int row, int col) {
@@ -57,8 +57,8 @@ public class Sudoku implements SudokuSolver {
     /**
      * Checks if the row contains the number
      * 
-     * @param row
-     * @param number
+     * @param row   The row
+     * @param number    The number
      * @return if the row contains number
      */
     private boolean rowContains(int row, int number) {
@@ -73,8 +73,8 @@ public class Sudoku implements SudokuSolver {
     /**
      * Checks if the column contains the number
      * 
-     * @param col
-     * @param number
+     * @param col   The column
+     * @param number    The number
      * @return if column contains number
      */
     private boolean colContains(int col, int number) {
@@ -89,9 +89,9 @@ public class Sudoku implements SudokuSolver {
     /**
      * Checks if the 3x3 box that the row and column is within contains the number
      * 
-     * @param row
-     * @param col
-     * @param number
+     * @param row   The row
+     * @param col   The column
+     * @param number    The number
      * @return if the 3x3 box that row and col is in contains number
      */
     private boolean boxContains(int row, int col, int number) {
@@ -142,6 +142,7 @@ public class Sudoku implements SudokuSolver {
         }
     }
 
+    /** Tömmer hela sudokut */
     @Override
     public void clear() { // Sätter alla rutor till 0
         for (int row = 0; row < 9; row++) {
@@ -153,6 +154,15 @@ public class Sudoku implements SudokuSolver {
 
     }
 
+    /**
+	 * Sets the digit number in the box row, col.
+	 * 
+	 * @param row    The row
+	 * @param col    The column
+	 * @param number The digit to insert
+	 * @throws IllegalArgumentException if number not in [1..9] or row or col is
+	 *                                  outside the allowed range
+	 */
     @Override
     public void setNumber(int row, int col, int number) {
         if (row < 0 || row > 8 || col < 0 || col > 8 || number < 0 || number > 9) {
@@ -165,6 +175,18 @@ public class Sudoku implements SudokuSolver {
             return;
     }
 
+    /**
+	 * Kollar om siffran number kan sättas i raden row och kolumnen col, om det inte
+	 * går enligt spelreglerna returneras false
+	 * 
+	 * @param row    The row
+	 * @param col    The column
+	 * @param number The digit to insert
+	 * @return true if it, according to the rules of Sudoku, is possible to put
+	 *         number at row, col, else false
+	 * @throws IllegalArgumentException if number not in [1..9] or row or col is
+	 *                                  outside the allowed range
+	 */
     @Override
     public boolean trySetNumber(int row, int col, int number) {
         if (row < 0 || row > 8 || col < 0 || col > 8 || number < 0 || number > 9) {
@@ -178,6 +200,14 @@ public class Sudoku implements SudokuSolver {
 
     }
 
+    /**
+	 * Returnerar siffran på raden row och kolumnen col.
+	 * 
+	 * @param row The row
+	 * @param col The column
+	 * @return int of box with row row and col col
+	 * @throws IllegalArgumentException if row or col is outside the allowed range
+	 */
     @Override
     public int getNumber(int row, int col) {
         if (row < 0 || row > 8 || col < 0 || col > 8) {
@@ -186,6 +216,13 @@ public class Sudoku implements SudokuSolver {
         return board[row][col];
     }
 
+    /**
+	 * Tar bort siffran på raden row och kolumnen col.
+	 * 
+	 * @param row The row
+	 * @param col The column
+	 * @throws IllegalArgumentException if row or col is outside the allowed range
+	 */
     @Override
     public void removeNumber(int row, int col) {
         if (row < 0 || row > 8 || col < 0 || col > 8) {
@@ -195,6 +232,11 @@ public class Sudoku implements SudokuSolver {
         boardCopy[row][col] = 0; // vilket värde ska en tom ruta ha?
     }
 
+	/**
+	 * Läser sudokut och returnerar true om sudokut går att lösa.
+	 * 
+	 * @return true if solvable, else false
+	 */
     @Override
     public boolean solve() {
         if (legalBoard()) {
@@ -208,6 +250,11 @@ public class Sudoku implements SudokuSolver {
 
     }
 
+    /**
+	 * Returnerar siffrorna i sudokut.
+	 * 
+	 * @return int array representing the Sudoku board
+	 */
     @Override
     public int[][] getNumbers() {
         int[][] tempReturn = new int[9][9];
@@ -219,6 +266,12 @@ public class Sudoku implements SudokuSolver {
         return tempReturn;
     }
 
+    /**
+	 * Fyller i siffrorna i numbers i sudokut.
+	 * 
+	 * @param numbers board
+	 * @throws IllegalArgumentException if not all numbers in [0..9]
+	 **/
     @Override
     public void setNumbers(int[][] numbers) {
         for (int row = 0; row < 9; row++) {
