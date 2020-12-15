@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 /**
- * @author Jacob Rinderud & Linus Carlsson Creates a graphical gui
+ * @author Jacob Rinderud & Linus Carlsson | Creates a graphical gui
  */
 public class Graphical {
     public Graphical(SudokuSolver sudoku) {
@@ -28,7 +28,7 @@ public class Graphical {
     /**
      * Creates the window that displays the sudoku and the application starts
      * 
-     * @param sudoku
+     * @param sudoku    SudokuSolver object
      */
     private void createWindow(SudokuSolver sudoku) {
         JFrame frame = new JFrame("Jacob Rinderud & Linus Carlsson, Sudoku Solving Machine, år COVID-19.");
@@ -84,8 +84,8 @@ public class Graphical {
     /**
      * Fills the array textFields with textFields and puts them in the segmentPanel
      * 
-     * @param textFields
-     * @param segmentPanel
+     * @param textFields        textFields to add
+     * @param segmentPanel      JPanel to add textFields to
      */
     private void createTextFields(JTextField[][] textFields, JPanel segmentPanel) {
         for (int row = 0; row < textFields.length; row++) {
@@ -125,7 +125,7 @@ public class Graphical {
     /**
      * Checks if text is a digit
      * 
-     * @param text
+     * @param text  String containing user input
      * @return true if text is a single digit
      */
     private boolean isDigit(String text) {
@@ -150,8 +150,8 @@ public class Graphical {
     /**
      * Updates the text in the textFields to the values in grid
      * 
-     * @param textFields
-     * @param grid
+     * @param textFields    textFields used in the visual representation
+     * @param grid          grid is a representation of the board
      */
     private void updateTextFields(JTextField[][] textFields, int[][] grid) {
         for (int row = 0; row < textFields.length; row++) {
