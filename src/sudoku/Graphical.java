@@ -33,7 +33,7 @@ public class Graphical {
     private void createWindow(SudokuSolver sudoku) {
         JFrame frame = new JFrame("Jacob Rinderud & Linus Carlsson, Sudoku Solving Machine, år COVID-19.");
         Container container = frame.getContentPane();
-        Dimension buttonDimension = new Dimension(450, 30);
+        Dimension buttonDimension = new Dimension(335, 25);
         GridLayout gridLayout = new GridLayout(9, 9);
         JPanel segmentPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
@@ -44,9 +44,9 @@ public class Graphical {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.setPreferredSize(new Dimension(925, 975));
-        container.setPreferredSize(new Dimension(925, 925));
-        segmentPanel.setPreferredSize(new Dimension(900, 900));
+        frame.setPreferredSize(new Dimension(680, 720));
+        container.setPreferredSize(new Dimension(680, 680));
+        segmentPanel.setPreferredSize(new Dimension(680, 655));
         solveButton.setPreferredSize(buttonDimension);
         clearButton.setPreferredSize(buttonDimension);
 
@@ -90,10 +90,10 @@ public class Graphical {
     private void createTextFields(JTextField[][] textFields, JPanel segmentPanel) {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
-                Dimension preferredSize = new Dimension(75, 75);
+                Dimension preferredSize = new Dimension(60, 60);
 
                 JTextField textField = new JTextField();
-                textField.setFont(new Font("Serif", Font.BOLD, 50));
+                textField.setFont(new Font("Serif", Font.BOLD, 40));
                 textField.setPreferredSize(preferredSize);
                 textField.setHorizontalAlignment(0);
                 textField.setVerifyInputWhenFocusTarget(true);
