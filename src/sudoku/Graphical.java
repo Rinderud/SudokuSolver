@@ -61,7 +61,7 @@ public class Graphical {
             if (sudoku.solve()) {
                 updateTextFields(textFields, sudoku.getNumbers());
             } else {
-                JOptionPane.showMessageDialog(solveButton, "Unsolvable sudoku", "Could not solve",
+                JOptionPane.showMessageDialog(null, "Unsolvable sudoku", "Could not solve",
                         JOptionPane.ERROR_MESSAGE);
             }
         });
