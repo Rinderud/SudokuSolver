@@ -245,7 +245,6 @@ public class Sudoku implements SudokuSolver {
             }
             return false;
         } else {
-            System.out.println("illegal board");
             return false;
         }
 

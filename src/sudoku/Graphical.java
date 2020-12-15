@@ -21,7 +21,7 @@ import javax.swing.SwingUtilities;
  * @author Jacob Rinderud & Linus Carlsson Creates a graphical gui
  */
 public class Graphical {
-    public Graphical(Sudoku sudoku) {
+    public Graphical(SudokuSolver sudoku) {
         SwingUtilities.invokeLater(() -> createWindow(sudoku));
     }
 
@@ -30,7 +30,7 @@ public class Graphical {
      * 
      * @param sudoku
      */
-    private void createWindow(Sudoku sudoku) {
+    private void createWindow(SudokuSolver sudoku) {
         JFrame frame = new JFrame("Jacob Rinderud & Linus Carlsson, Sudoku Solving Machine, år COVID-19.");
         Container container = frame.getContentPane();
         Dimension buttonDimension = new Dimension(450, 30);
@@ -170,7 +170,7 @@ public class Graphical {
      * @param textFields
      * @param sudoku
      */
-    private void setTextFields(JTextField[][] textFields, Sudoku sudoku) {
+    private void setTextFields(JTextField[][] textFields, SudokuSolver sudoku) {
         for (int row = 0; row < textFields.length; row++) {
             for (int col = 0; col < textFields[row].length; col++) {
                 String text = textFields[row][col].getText();
@@ -184,7 +184,7 @@ public class Graphical {
     }
 
     public static void main(String[] args) {
-        Sudoku solveThis = new Sudoku();
+        SudokuSolver solveThis = new Sudoku();
         new Graphical(solveThis);
     }
 }
